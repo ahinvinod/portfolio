@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Science Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            color: white;
+            animation: fadeIn 1s ease-in;
+        }
+        
+        .profile-photo {
+            width: 300px;
+            height: 280px;
+            border-radius: 50%;
+            border: 3px solid white;
+            margin: 0 auto 20px;
+            object-fit: cover;
+        }
+        
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        header p {
+            font-size: 1.3em;
+            opacity: 0.95;
+        }
+        
+        .section {
+            background: white;
+            margin: 20px 0;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            animation: slideUp 0.6s ease-out;
+        }
+        
+        .section h2 {
+            color: #667eea;
+            margin-bottom: 25px;
+            font-size: 2em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .skill-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            transition: transform 0.3s ease;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .skill-card h3 {
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        
+        .project-card {
+            background: #f8f9fa;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateX(5px);
+        }
+        
+        .project-card h3 {
+            color: #764ba2;
+            margin-bottom: 10px;
+            font-size: 1.5em;
+        }
+        
+        .project-tags {
+            margin-top: 15px;
+        }
+        
+        .tag {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin: 5px;
+            font-size: 0.9em;
+        }
+
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .certificate-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .certificate-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .certificate-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .certificate-info {
+            padding: 20px;
+        }
+        
+        .certificate-info h3 {
+            color: #764ba2;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        
+        .certificate-info p {
+            color: #666;
+            margin-bottom: 8px;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .contact-item {
+            text-align: center;
+            padding: 20px;
+            min-width: 200px;
+        }
+        
+        .contact-item i {
+            font-size: 2em;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            header h1 {
+                font-size: 2em;
+            }
+            
+            .section {
+                padding: 25px;
+            }
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            margin: 10px 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: #764ba2;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="your-photo.jpg.jpeg" alt="Ahin Vinod" class="profile-photo">
+            <h1>Ahin Vinod</h1>
+            <p>MCA Student | Data Science Enthusiast | LPU</p>
+            <div style="margin-top: 20px;">
+                <a href="#projects" class="btn">View Projects</a>
+                <a href="#contact" class="btn">Get in Touch</a>
+            </div>
+        </header>
+        
+        <div class="section">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div>
+                    <p style="font-size: 1.1em; line-height: 1.8;">
+                        I'm a passionate Data Science professional pursuing my Master of Computer Applications at Lovely Professional University. With a strong foundation in machine learning, statistical analysis, and data visualization, I'm dedicated to extracting meaningful insights from complex datasets and building intelligent solutions.
+                    </p>
+                </div>
+                <div>
+                    <p style="font-size: 1.1em; line-height: 1.8;">
+                        My journey in data science combines rigorous academic training with hands-on project experience, enabling me to tackle real-world problems using cutting-edge technologies and analytical methodologies.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Programming</h3>
+                    <p>Python, SQL</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Machine Learning</h3>
+                    <p>Scikit-learn</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Data Analysis</h3>
+                    <p>Pandas, Statistics</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Visualization</h3>
+                    <p>Tableau</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Big Data</h3>
+                    <p>Hadoop</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section" id="projects">
+            <h2>Featured Projects</h2>
+            
+            <div class="project-card">
+                <h3>Smart Plant Monitoring System</h3>
+                <p>Developed and implemented a real-time IoT-based plant monitoring system utilizing NodeMCU microcontrollers and Blynk IoT platform to automate irrigation and optimize soil conditions. The system integrated multiple sensors to collect and analyze critical data, resulting in a 30% reduction in water usage, 25% increase in plant growth efficiency, and 80% reduction in manual monitoring labor. Leveraged MQTT protocol for seamless data transmission and designed a user-friendly dashboard for remote monitoring and control. Successfully deployed in a 1000 sq. ft. greenhouse, demonstrating improved plant health and resource utilization.</p>
+                <div class="project-tags">
+                    <span class="tag">NodeMCU</span>
+                    <span class="tag">BlynkIot</span>
+                    <span class="tag">Arduino</span>
+                    <span class="tag">Moisture sensor</span>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <h3>Interactive Counter Application with Error Handling</h3>
+                <p>Developed a dynamic web application that allows users to increment, decrement, and reset a counter value with robust error handling for out-of-memory and invalid range conditions. Implemented a responsive layout to ensure cross-device compatibility, improving user experience by 30% across various screen sizes. Utilized JavaScript to manage state and user interactions, while leveraging HTML and CSS for a clean, intuitive interface. The application successfully handles edge cases, reducing runtime errors by 40% compared to initial prototypes.</p>
+                <div class="project-tags">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">JavaScript</span>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <h3>Sales Forecasting Dashboard</h3>
+                <p>Created a time-series forecasting model using ARIMA and Prophet to predict sales trends. Built an interactive Tableau dashboard for stakeholders to visualize predictions and business insights.</p>
+                <div class="project-tags">
+                    <span class="tag">Time Series</span>
+                    <span class="tag">Tableau</span>
+                    <span class="tag">Statistical Modeling</span>
+                    <span class="tag">Business Analytics</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Education</h2>
+            <div class="project-card">
+                <h3>Bachelor of Computer Applications (BCA)</h3>
+                <p><strong>Chetana's Institute of Management & Research</strong> | Graduation: 2024</p>
+            </div>
+           
+            <div class="project-card">
+                <h3>Master of Computer Applications (MCA)</h3>
+                <p><strong>Lovely Professional University</strong> | Expected Graduation: 2027</p>
+                <p>Specialization: Data Science</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Professional Certificates</h2>
+            <div class="certificates-grid">
+                <div class="certificate-card">
+                    <img src="cert1.jpg.jpg" alt="Certificate" class="certificate-img">
+                    <div class="certificate-info">
+                        <h3>Web-development using JavaScript</h3>
+                        <p><strong>Issuer:</strong> Chetana's Institute of Management and Research</p>
+                        <p><strong>Date:</strong> May 2024</p>
+                    </div>
+                </div>
+                
+                <div class="certificate-card">
+                    <img src="cert2.png" alt="Certificate" class="certificate-img">
+                    <div class="certificate-info">
+                        <h3>Data Science Internship & Training Program</h3>
+                        <p><strong>Issuer:</strong> INNOKNOWVEX</p>
+                        <p><strong>Date:</strong> Ongoing</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section" id="contact">
+            <h2>Let's Connect</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div style="font-size: 2em; margin-bottom: 10px;">📧</div>
+                    <p><strong>Email</strong></p>
+                    <p>ahinvinod04@gmail.com</p>
+                </div>
+                <div class="contact-item">
+                    <div style="font-size: 2em; margin-bottom: 10px;">💼</div>
+                    <p><strong>LinkedIn</strong></p>
+                    <p>linkedin.com/in/ahin-vinod-b422ba2b5</p>
+                </div>
+                <div class="contact-item">
+                    <div style="font-size: 2em; margin-bottom: 10px;">💻</div>
+                    <p><strong>GitHub</strong></p>
+                    <p>github.com/ahinvinod</p>
+                </div>
+                <div class="contact-item">
+                    <div style="font-size: 2em; margin-bottom: 10px;">📱</div>
+                    <p><strong>Phone</strong></p>
+                    <p>+91-7994014080</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
